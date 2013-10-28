@@ -3,7 +3,7 @@ $(function(){
 	var socket = io.connect('http://localhost:3002')
 
 	socket.on('message', function(message){
-		console.log(message)
+		// console.log(message)
 		$('#room').append('<div>'+message+'  - '+new Date()+'</div>')
 	});
 

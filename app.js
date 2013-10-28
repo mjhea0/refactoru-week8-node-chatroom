@@ -43,7 +43,7 @@ io.sockets.on('connection', function(socket) {
   console.log('SOMEONE CONNECTED!')
   users[socket.id] = socket.id
   socket.on('message', function(message){
-  	console.log(message)
+  	// console.log(message)
       socket.broadcast.emit('message', message)
   });
 });
