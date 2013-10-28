@@ -31,7 +31,7 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
  
 //Create the server
-var server = http.createServer(app)
+var server = http.createServer(app);
 
 //Start the web socket server
 var io = socketio.listen(server);
@@ -40,13 +40,19 @@ var users = {}
 
 //If the client just connected
 io.sockets.on('connection', function(socket) {
-  console.log('SOMEONE CONNECTED!')
-  users[socket.id] = socket.id
+  socket.broadcast.emit('message', 'SOMEONE CONNECTED!');
+  users[socket.id] = socket.id;
+  	socket.send(socket.id)
   socket.on('message', function(message){
   	// console.log(message)
-      socket.broadcast.emit('message', message)
+    socket.broadcast.emit('message', message);
+    socket.emit('server_message', message);
+  });
+  socket.on('disconnect', function(){
+  	socket.broadcast.emit('message', "SOMEONE DISCONNECTED!");
   });
 });
+
 
 server.listen(3002, function(){
   console.log('Express server listening on port ' + app.get('port'));
