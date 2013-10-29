@@ -31,7 +31,8 @@ Build a real-time chat application using Socket.io
 
 1.  Now let's create an event to let the server know when a connection has been made by the client. Add a "connection" event to your app.js `io.sockets.on('connection',function(){...});`
 2.  Create an empty object **outside** of your connection event to hold our users.
-3.  Create an event inside of the connection event to receive a message Note that all of our socket events on the server will go inside of the connection event</div></div></div><div class="space-3"><div class="part">
+3.  Create an event inside of the connection event to receive a message 
+4.  Note that all of our socket events on the server will go inside of the connection event
 
 #### Part III (Setup socket events on the client)
 
@@ -45,7 +46,7 @@ Build a real-time chat application using Socket.io
 2.  **On the server** `console.log()` the message to ensure that the message has made it to the server.
 3.  **On the server** in your "message" event. Send the message to the entire chatroom by doing `io.sockets.emit('message', 'my message'); `
 4.  **On the client ** when the "message" event is fired, append the message to the div with the id "room"
-5.  You should be able to open two tabs in Chrome with [http://localhost:3000](http://localhost:3000) and chat back and forth</div></div><div class="space-3"><div class="part">
+5.  You should be able to open two tabs in Chrome with [http://localhost:3000](http://localhost:3000) and chat back and forth
 
 #### Bonus I
 
@@ -55,6 +56,6 @@ Build a real-time chat application using Socket.io
 #### Bonus II
 
 1.  When a user connects to the server, emit an event that shows their socket ID in the right column of that chat UI.
-2.  Create a feature that allows the user to change their user name.<div class="alert alert-info">Everytime someone connects or disconnects you should be updating the "users" object that we created in Part II</div></div></div>
+2.  Create a feature that allows the user to change their user name.Everytime someone connects or disconnects you should be updating the "users" object that we created in Part II</div></div></div>
 
 **Success! **Now you know how to create a real-time web app using websockets!
