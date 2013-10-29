@@ -30,8 +30,8 @@ $(function(){
   // jquery event handlers
   $('#message-input').on('keyup', function(e){
     if(e.which === 13){
-      var message = $(this).val();
-      socket.emit('message', message);
+      var userMessage = $(this).val();
+      socket.emit('message', userMessage);
       $(this).val(''); 
     };
   });
