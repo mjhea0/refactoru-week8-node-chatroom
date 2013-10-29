@@ -1,17 +1,12 @@
-
-/**
- * Module dependencies.
- */
-
+// dependencies
 var express = require('express');
 var routes = require('./routes');
-var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var socketio = require('socket.io')
 var app = express();
 
-// all environments
+// config for all environments
 app.set('port', process.env.PORT || 3002);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
@@ -22,39 +17,39 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// development only
+// config for development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
-}
+};
 
 //index route
 app.get('/', routes.index);
- 
-//Create the server
-var server = http.createServer(app);
 
-//Start the web socket server
-var io = socketio.listen(server);
+// create/start the socket server
+var server = http.createServer(app), io = socketio.listen(server);
 
-var users = {}
+// users object
+var users = {};
 
-//If the client just connected
+
+// if the client just connected
 io.sockets.on('connection', function(socket) {
-  socket.broadcast.emit('message', 'SOMEONE CONNECTED!');
   users[socket.id] = socket.id;
-  	socket.send(socket.id)
-  socket.on('message', function(message){
-  	// console.log(message)
-    socket.broadcast.emit('message', message);
-    socket.emit('server_message', message);
-  });
-  socket.on('disconnect', function(){
-  	socket.broadcast.emit('message', "SOMEONE DISCONNECTED!");
-  });
-});
+  io.sockets.emit('message', socket.id+' has joined the chatroom.');
+  io.sockets.emit('users', users);
 
+  socket.on('message', function(message){
+  io.sockets.emit('message', {message: message, user: users[socket.id]});
+  });
+
+  socket.on('disconnect', function() {
+    delete users[socket.id];
+    io.sockets.emit('users', users);
+    io.sockets.emit('disconnect', socket.id +' has left the chatroom.');
+  });
+  
+});
 
 server.listen(3002, function(){
-  console.log('Express server listening on port ' + app.get('port'));
+console.log('Express server listening on port ' + app.get('port'));
 });
-
