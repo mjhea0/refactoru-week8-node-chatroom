@@ -26,8 +26,6 @@ Build a real-time chat application using Socket.io
 
 1.  Download the starter code [here](https://github.com/RefactorU/exercise-starters/tree/master/nodejs/chatroom)
 2.  run `npm install` inside of that directory
-3.  Once you get your server running you should see something like
-![](/public/img/screenshots/nodejs/socketio-running.png) You now have socket.io running!</div></div></div><div class="space-3"><div class="part">
 
 #### Part II (Setup socket events on the server)
 
