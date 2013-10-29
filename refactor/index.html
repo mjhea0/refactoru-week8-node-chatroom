@@ -7,8 +7,10 @@
     <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {padding-top: 60px;}
-      .container {max-width: 600px;}
+      .container {max-width: 700px;}
       .navbar {min-height: 10px;}
+      .inlineBlock {display: inline-block;}
+      .topAligned {vertical-align: top; padding-left: 20px;}
     </style>
   </head>
   <body>
@@ -24,17 +26,21 @@
       </div><!-- /.container -->
     </nav>
     <div class="container">
-      <h2>Node Chit Chat</h2>
-      <br>
-      <strong>Online Users</strong>
-      <div id="users"></div>
-      <br>
-      <div class="input-group">
-        <input type="text" id="data" class="form-control"> 
-        <button type="button" id="datasend" class="btn btn-primary">Send!</button>
+    <h1>Node Chit Chat</h1>
+    <br>
+    <div>
+      <div class="inlineBlock">
+        <div class="input-group">
+          <input type="text" id="data" class="form-control"> 
+          <button type="button" id="datasend" class="btn btn-primary">Send!</button>
+        </div>
       </div>
-      <br>
-      <div id="conversation"></div>
+      <div class="inlineBlock topAligned"><strong>Participants</strong><br>
+        <div id="users"></div>
+      </div>
+    </div>
+    <br>
+    <div id="conversation"></div>
     </div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
