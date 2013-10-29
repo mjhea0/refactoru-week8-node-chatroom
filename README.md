@@ -20,26 +20,26 @@ Build a real-time chat application using Socket.io
 *   [Starter Code](https://github.com/RefactorU/exercise-starters/tree/master/nodejs/chatroom)
 
 ### Requirements
-<div class="space-3"><div class="part">
+
 
 #### Part I (Get Socket.io running)
 
 1.  Download the starter code [here](https://github.com/RefactorU/exercise-starters/tree/master/nodejs/chatroom)
 2.  run `npm install` inside of that directory
 3.  Once you get your server running you should see something like
-![](/public/img/screenshots/nodejs/socketio-running.png)<div class="alert alert-success">You now have socket.io running!</div></div></div><div class="space-3"><div class="part">
+![](/public/img/screenshots/nodejs/socketio-running.png) You now have socket.io running!</div></div></div><div class="space-3"><div class="part">
 
 #### Part II (Setup socket events on the server)
 
 1.  Now let's create an event to let the server know when a connection has been made by the client. Add a "connection" event to your app.js `io.sockets.on('connection',function(){...});`
 2.  Create an empty object **outside** of your connection event to hold our users.
-3.  Create an event inside of the connection event to receive a message<div class="alert alert-danger">Note that all of our socket events on the server will go inside of the connection event</div></div></div><div class="space-3"><div class="part">
+3.  Create an event inside of the connection event to receive a message Note that all of our socket events on the server will go inside of the connection event</div></div></div><div class="space-3"><div class="part">
 
 #### Part III (Setup socket events on the client)
 
 1.  Now let's setup our client side events. The HTML has been provided for you [](#). Create a connect statement to connect to your server `var socket = io.connect('http://localhost')`
 2.  Now lets create a "connect" event `socket.on('connect', function(){})`
-3.  Create a "message" event **inside** of the "connect" event's callback</div></div><div class="space-3"><div class="part">
+3.  Create a "message" event **inside** of the "connect" event's callback
 
 #### Part IV (Send messages)
 
@@ -52,7 +52,7 @@ Build a real-time chat application using Socket.io
 #### Bonus I
 
 1.  Whenever someone connects to the chat room. Display a message to the room that shows that someone has connected.
-2.  Whenever someone disconnects, announce to teh room that someone has left.<div class="alert alert-info">Use the "disconnect" event</div></div></div><div class="space-3"><div class="part">
+2.  Whenever someone disconnects, announce to teh room that someone has left. Use the "disconnect" event
 
 #### Bonus II
 
